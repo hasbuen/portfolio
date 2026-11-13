@@ -70,7 +70,7 @@ export function Resume() {
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle size={13} className="text-emerald-400" />
-                  <span>Links ativos (E-mail, LinkedIn, GitHub)</span>
+                  <span>QR Code & Hiperlinks ativos para o Portfólio</span>
                 </div>
               </div>
             </div>
@@ -118,11 +118,11 @@ export function Resume() {
               <div className="space-y-1.5 mb-6 text-xs text-slate-400">
                 <div className="flex items-center gap-2">
                   <CheckCircle size={13} className="text-sky-400" />
-                  <span>Compactação sem perda de legibilidade</span>
+                  <span>Compactação milimétrica (1 página exata)</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle size={13} className="text-sky-400" />
-                  <span>Ideal para triagens rápidas</span>
+                  <span>QR Code & Hiperlinks ativos para o Portfólio</span>
                 </div>
               </div>
             </div>
