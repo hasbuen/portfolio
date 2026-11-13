@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Currículo - Julio Cesar Ovídio Bueno</title>
+<style>
+  @page {
+    size: A4 portrait;
+    margin: 18mm 20mm 18mm 20mm;
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    color: #111827;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+    font-size: 9.8pt;
+    line-height: 1.38;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Cabeçalho */
+  header {
+    border-bottom: 2px solid #0f172a;
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .name {
+    font-size: 19pt;
+    font-weight: 800;
+    color: #0f172a;
+    letter-spacing: 0.5px;
+    margin: 0 0 3px 0;
+    text-transform: uppercase;
+  }
+
+  .target-role {
+    font-size: 11pt;
+    font-weight: 700;
+    color: #1e3a8a;
+    margin: 0 0 6px 0;
+    letter-spacing: 0.2px;
+  }
+
+  .contact-info {
+    font-size: 9.2pt;
+    color: #374151;
+    line-height: 1.45;
+  }
+
+  .contact-info a {
+    color: #0369a1;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .separator {
+    color: #94a3b8;
+    margin: 0 5px;
+  }
+
+  .qr-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    margin-left: 14px;
+    flex-shrink: 0;
+  }
+
+  .qr-box img {
+    width: 66px;
+    height: 66px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 2px;
+    background: #ffffff;
+  }
+
+  .qr-box span {
+    font-size: 6.8pt;
+    color: #1e3a8a;
+    font-weight: 800;
+    margin-top: 3px;
+    letter-spacing: 0.2px;
+    text-transform: uppercase;
+  }
+
+  /* Seções */
+  section {
+    margin-bottom: 11px;
+  }
+
+  .section-title {
+    font-size: 11.5pt;
+    font-weight: 800;
+    color: #0f172a;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    border-bottom: 1px solid #cbd5e1;
+    padding-bottom: 3px;
+    margin: 0 0 7px 0;
+  }
+
+  /* Parágrafos e Listas */
+  p {
+    margin: 0 0 6px 0;
+    text-align: justify;
+    text-justify: inter-word;
+  }
+
+  .lead-text {
+    font-size: 9.6pt;
+    line-height: 1.42;
+    color: #1f2937;
+  }
+
+  .skills-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .skills-list li {
+    font-size: 9.3pt;
+    line-height: 1.4;
+    margin-bottom: 4px;
+    color: #1f2937;
+  }
+
+  .skills-list strong {
+    color: #0f172a;
+    font-weight: 700;
+  }
+
+  /* Blocos de Experiência */
+  .job-block {
+    margin-bottom: 9px;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 1px;
+  }
+
+  .job-title-company {
+    font-size: 10pt;
+    font-weight: 700;
+    color: #0f172a;
+  }
+
+  .job-role {
+    font-weight: 600;
+    color: #1e3a8a;
+  }
+
+  .job-date-location {
+    font-size: 8.8pt;
+    font-style: italic;
+    color: #475569;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  ul.job-bullets {
+    margin: 3px 0 0 0;
+    padding-left: 17px;
+  }
+
+  ul.job-bullets li {
+    font-size: 9.3pt;
+    line-height: 1.38;
+    color: #1f2937;
+    margin-bottom: 2px;
+    text-align: justify;
+    text-justify: inter-word;
+  }
+
+  /* Formação Acadêmica & Projetos */
+  .edu-block {
+    margin-bottom: 7px;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .edu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .edu-institution {
+    font-size: 9.8pt;
+    font-weight: 700;
+    color: #0f172a;
+  }
+
+  .edu-course {
+    font-size: 9.3pt;
+    color: #1f2937;
+    margin-top: 1px;
+  }
+
+  .edu-status {
+    font-size: 8.8pt;
+    font-style: italic;
+    color: #475569;
+  }
+
+  .project-block {
+    margin-bottom: 5px;
+    font-size: 9.3pt;
+    line-height: 1.38;
+    color: #1f2937;
+  }
+
+  .project-block strong {
+    color: #0f172a;
+    font-weight: 700;
+  }
+
+  .availability-box {
+    background-color: #f8fafc;
+    border-left: 3px solid #1e3a8a;
+    padding: 6px 12px;
+    font-size: 9.3pt;
+    color: #1e293b;
+    margin-top: 4px;
+  }
+
+  /* Quebra de página controlada para equilíbrio 50/50 */
+  .page-break {
+    page-break-before: always;
+    break-before: page;
+    padding-top: 4px;
+  }
+
+  .page2-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #cbd5e1;
+    padding-bottom: 4px;
+    margin-bottom: 12px;
+    font-size: 8pt;
+    color: #64748b;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  @media screen {
+    body {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 30px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+      background: #ffffff;
+    }
+    .page-break {
+      border-top: 2px dashed #cbd5e1;
+      margin-top: 30px;
+      padding-top: 20px;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ==================== PÁGINA 1 ==================== -->
+  <header>
+    <div class="header-content">
+      <div>
+        <h1 class="name">Julio Cesar Ovídio Bueno</h1>
+        <div class="target-role">Analista de Suporte &nbsp;|&nbsp; Help Desk &nbsp;|&nbsp; Sistemas ERP</div>
+        <div class="contact-info">
+          <span>Cascavel, PR</span>
+          <span class="separator">•</span>
+          <span>(45) 9 9982-3929</span>
+          <span class="separator">•</span>
+          <a href="mailto:julio.cesar.ovidio.bueno@gmail.com">julio.cesar.ovidio.bueno@gmail.com</a>
+          <br>
+          <span>LinkedIn: <a href="https://www.linkedin.com/in/julio-cesar-ovidio-bueno/" target="_blank">linkedin.com/in/julio-cesar-ovidio-bueno</a></span>
+          <span class="separator">•</span>
+          <span>GitHub: <a href="https://github.com/hasbuen" target="_blank">github.com/hasbuen</a></span>
+          <br>
+          <span>Portfólio Online: <a href="https://julio-cesar-ovidio-bueno.vercel.app/" target="_blank">julio-cesar-ovidio-bueno.vercel.app</a></span>
+        </div>
+      </div>
+      <a href="https://julio-cesar-ovidio-bueno.vercel.app/" target="_blank" class="qr-box" title="Acesse o Portfólio Online">
+        <img src="data:image/png;base64,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" alt="QR Code Portfólio" />
+        <span>Portfólio Online</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- RESUMO PROFISSIONAL -->
+  <section>
+    <h2 class="section-title">Resumo Profissional</h2>
+    <p class="lead-text">
+      Analista de suporte com sólida experiência em <strong>Help Desk</strong>, atendimento técnico corporativo e <strong>implantação de sistemas ERP</strong>. Especialista em diagnóstico e resolução de incidentes em <strong>infraestrutura, redes e bancos de dados</strong>. Histórico comprovado na manutenção de sistemas de missão crítica e no desenvolvimento de ferramentas internas para automação e otimização de processos do suporte operacional.
+    </p>
+  </section>
+
+  <!-- COMPETÊNCIAS TÉCNICAS -->
+  <section>
+    <h2 class="section-title">Competências Técnicas</h2>
+    <ul class="skills-list">
+      <li>
+        <strong>• Suporte &amp; Atendimento:</strong> Help Desk (N1/N2/N3), atendimento corporativo, gestão e triagem de incidentes, implantação e parametrização de ERP, homologação de fluxos operacionais, capacitação e treinamento de usuários finais.
+      </li>
+      <li>
+        <strong>• Bancos de Dados &amp; Linguagens:</strong> SQL, PostgreSQL, MySQL, Redis, JavaScript, TypeScript, C#, Python, Java. Elaboração de consultas, diagnóstico de inconsistências e migração de dados.
+      </li>
+      <li>
+        <strong>• Desenvolvimento (Front-end &amp; Back-end):</strong> HTML5, CSS3, React, Sass, NestJS, PrismaJS, GraphQL, arquitetura de APIs e integração de sistemas.
+      </li>
+      <li>
+        <strong>• Infraestrutura &amp; Ferramentas:</strong> Linux, Redes de Computadores, Docker, Jenkins, Git / GitHub, automação de tarefas e rotinas operacionais.
+      </li>
+    </ul>
+  </section>
+
+  <!-- EXPERIÊNCIA PROFISSIONAL (PARTE 1) -->
+  <section>
+    <h2 class="section-title">Experiência Profissional</h2>
+
+    <!-- Rhede Sistemas -->
+    <div class="job-block">
+      <div class="job-header">
+        <span class="job-title-company">Rhede Sistemas &nbsp;—&nbsp; <span class="job-role">Analista de Suporte (Help Desk)</span></span>
+        <span class="job-date-location">Janeiro/2021 – Presente &nbsp;|&nbsp; Cascavel, PR</span>
+      </div>
+      <ul class="job-bullets">
+        <li>Atuação em Help Desk avançado e suporte técnico corporativo focado em estabilidade de sistemas ERP e infraestrutura de clientes.</li>
+        <li>Diagnóstico e resolução profunda de inconsistências de dados e falhas em ambientes de produção de alta exigência.</li>
+        <li>Manutenção e sustentação do produto Whats Profissional e desenvolvimento proativo de ferramentas internas para automação de processos repetitivos do suporte técnico.</li>
+      </ul>
+    </div>
+
+    <!-- Junsoft Sistemas -->
+    <div class="job-block">
+      <div class="job-header">
+        <span class="job-title-company">Junsoft Sistemas &nbsp;—&nbsp; <span class="job-role">Analista de Suporte (Help Desk)</span></span>
+        <span class="job-date-location">Dezembro/2017 – Julho/2018 &nbsp;|&nbsp; Cascavel, PR</span>
+      </div>
+      <ul class="job-bullets">
+        <li>Instalação, homologação e configuração de softwares comerciais ERP em clientes corporativos.</li>
+        <li>Atendimento consultivo direto a usuários finais e resolução de incidentes críticos em bancos de dados relacionais.</li>
+      </ul>
+    </div>
+
+    <!-- Linx S.A. -->
+    <div class="job-block">
+      <div class="job-header">
+        <span class="job-title-company">Linx S.A. &nbsp;—&nbsp; <span class="job-role">Analista de Desenvolvimento de Software</span></span>
+        <span class="job-date-location">Fevereiro/2015 – Abril/2016 &nbsp;|&nbsp; Cascavel, PR</span>
+      </div>
+      <ul class="job-bullets">
+        <li>Implantação de sistemas ERP voltados ao segmento varejista, abrangendo parametrização fiscal e financeira.</li>
+        <li>Validação e testes de fluxos operacionais de ponta a ponta e capacitação/treinamento de equipes de usuários finais.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ==================== PÁGINA 2 ==================== -->
+  <div class="page-break"></div>
+  <div class="page2-header">
+    <span>JULIO CESAR OVÍDIO BUENO</span>
+    <span>CURRÍCULO PROFISSIONAL</span>
+  </div>
+
+  <!-- EXPERIÊNCIA PROFISSIONAL (CONTINUAÇÃO) -->
+  <section>
+    <h2 class="section-title">Experiência Profissional (Continuação)</h2>
+
+    <!-- Softpharma -->
+    <div class="job-block">
+      <div class="job-header">
+        <span class="job-title-company">Softpharma &nbsp;—&nbsp; <span class="job-role">Analista de Suporte (Help Desk)</span></span>
+        <span class="job-date-location">Março/2014 – Fevereiro/2015 &nbsp;|&nbsp; Cascavel, PR</span>
+      </div>
+      <ul class="job-bullets">
+        <li>Instalação e implantação de sistemas comerciais para o segmento farmacêutico/varejista.</li>
+        <li>Atuação no suporte técnico de 1º e 2º nível, realizando administração, consultas e manutenção em bancos de dados.</li>
+      </ul>
+    </div>
+
+    <!-- Prefeitura Municipal de Vera Cruz do Oeste -->
+    <div class="job-block">
+      <div class="job-header">
+        <span class="job-title-company">Prefeitura Municipal de Vera Cruz do Oeste &nbsp;—&nbsp; <span class="job-role">Professor de Informática (Estágio)</span></span>
+        <span class="job-date-location">Janeiro/2012 – Janeiro/2014 &nbsp;|&nbsp; Vera Cruz do Oeste, PR</span>
+      </div>
+      <ul class="job-bullets">
+        <li>Planejamento e ministração de treinamentos práticos de informática básica, aplicativos de produtividade e noções operacionais de computadores para turmas da rede municipal.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FORMAÇÃO ACADÊMICA -->
+  <section>
+    <h2 class="section-title">Formação Acadêmica</h2>
+
+    <div class="edu-block">
+      <div class="edu-header">
+        <span class="edu-institution">Instituto Federal do Paraná (IFPR)</span>
+        <span class="edu-status">Interrompido / Em andamento</span>
+      </div>
+      <div class="edu-course">Tecnologia em Análise e Desenvolvimento de Sistemas (TADS)</div>
+    </div>
+
+    <div class="edu-block">
+      <div class="edu-header">
+        <span class="edu-institution">Universidade Paranaense (Unipar)</span>
+        <span class="edu-status">Interrompido</span>
+      </div>
+      <div class="edu-course">Bacharelado em Sistemas de Informação Gerencial</div>
+    </div>
+  </section>
+
+  <!-- PROJETOS SELECIONADOS -->
+  <section>
+    <h2 class="section-title">Projetos Selecionados</h2>
+
+    <div class="project-block">
+      <strong>• Protocord:</strong> Plataforma para centralização e rastreamento de demandas de ERP, com acompanhamento sistemático de erros, incidentes e sugestões originadas no atendimento do suporte técnico.
+    </div>
+
+    <div class="project-block">
+      <strong>• Transcritor &amp; Acionar:</strong> Conjunto de ferramentas utilitárias desenvolvidas para transcrição inteligente de dados e execução automatizada de rotinas operacionais diárias.
+    </div>
+
+    <div class="project-block">
+      <strong>• Storage Space:</strong> Sistema robusto de gestão e processamento de armazenamento de arquivos de áudio construído com arquitetura moderna baseada em NestJS, PrismaJS e GraphQL.
+    </div>
+  </section>
+
+  <!-- DISPONIBILIDADE -->
+  <section>
+    <h2 class="section-title">Disponibilidade &amp; Informações Adicionais</h2>
+    <div class="availability-box">
+      <strong>• Disponibilidade Geográfica:</strong> Total disponibilidade para viagens corporativas, deslocamentos diários e mudança de cidade ou estado.
+    </div>
+  </section>
+
+</body>
+</html>
