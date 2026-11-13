@@ -46,10 +46,17 @@ export function Navbar({ sections, activeSection }: NavbarProps) {
           {/* Logo / Name */}
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="flex items-center gap-2 group"
+            className="flex items-center gap-2.5 group"
           >
-            <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center font-bold text-white text-sm group-hover:bg-blue-500 transition-colors">
-              JC
+            <div className="w-8 h-8 rounded-full overflow-hidden border border-blue-500/50 group-hover:border-blue-400 transition-colors shadow-sm bg-slate-800 shrink-0">
+              <img
+                src="/profile.jpg"
+                onError={(e) => {
+                  e.currentTarget.src = "https://avatars.githubusercontent.com/u/91395027?v=4"
+                }}
+                alt="Julio Bueno"
+                className="w-full h-full object-cover"
+              />
             </div>
             <span className="font-semibold text-white hidden sm:block">
               Julio<span className="text-blue-400"> Bueno</span>

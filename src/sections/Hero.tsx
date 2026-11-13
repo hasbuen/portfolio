@@ -43,8 +43,28 @@ export function Hero() {
       </div>
 
       <div className="section-container relative z-10 flex flex-col items-center text-center">
+        {/* Avatar com anel luminoso */}
+        <div className="relative mb-5 group animate-fade-in">
+          <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 via-sky-500 to-indigo-500 rounded-full blur-md opacity-75 group-hover:opacity-100 transition duration-300"></div>
+          <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden border-2 border-slate-700/80 shadow-2xl bg-slate-800">
+            <img
+              src="/profile.jpg"
+              onError={(e) => {
+                // Fallback para a URL remota do GitHub caso necessário
+                e.currentTarget.src = "https://avatars.githubusercontent.com/u/91395027?v=4"
+              }}
+              alt="Julio Cesar Ovídio Bueno"
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <span
+            className="absolute bottom-1 right-1 w-5 h-5 bg-emerald-500 border-2 border-slate-900 rounded-full shadow-md"
+            title="Online / Disponível para oportunidades"
+          />
+        </div>
+
         {/* Availability badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-emerald-400 text-sm font-medium mb-8 animate-fade-in">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-emerald-400 text-xs sm:text-sm font-medium mb-6 animate-fade-in">
           <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse-slow" />
           Disponível para novas oportunidades
         </div>
