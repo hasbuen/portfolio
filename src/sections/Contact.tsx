@@ -1,4 +1,6 @@
-import { Mail, Phone, Heart } from 'lucide-react'
+import { useState } from 'react'
+import { motion } from 'framer-motion'
+import { Mail, Phone, Heart, Copy, Check, MessageSquare } from 'lucide-react'
 
 function GithubIcon({ size = 20 }: { size?: number }) {
   return (
@@ -17,71 +19,141 @@ function LinkedinIcon({ size = 20 }: { size?: number }) {
 }
 
 export function Contact() {
-  return (
-    <section id="contato" className="border-t border-slate-800/60">
-      <div className="section-container">
-        <p className="text-blue-400 text-sm font-semibold uppercase tracking-widest mb-3">Contato</p>
-        <h2 className="section-title">Vamos Conversar?</h2>
-        <p className="section-subtitle max-w-lg">
-          Estou disponível para novas oportunidades, projetos colaborativos ou apenas uma boa troca de
-          ideias sobre tecnologia e suporte.
-        </p>
+  const [copied, setCopied] = useState(false)
+  const email = 'julio.cesar.ovidio.bueno@gmail.com'
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-3xl mb-12">
-          {[
-            {
-              icon: <Mail size={20} />,
-              label: 'E-mail',
-              value: 'julio.cesar.ovidio.bueno@gmail.com',
-              href: 'mailto:julio.cesar.ovidio.bueno@gmail.com',
-              color: 'blue',
-            },
-            {
-              icon: <Phone size={20} />,
-              label: 'WhatsApp',
-              value: '(45) 9 9982-3929',
-              href: 'https://wa.me/5545999823929',
-              color: 'green',
-            },
-            {
-              icon: <LinkedinIcon size={20} />,
-              label: 'LinkedIn',
-              value: 'julio-cesar-ovidio-bueno',
-              href: 'https://www.linkedin.com/in/julio-cesar-ovidio-bueno/',
-              color: 'blue',
-            },
-            {
-              icon: <GithubIcon size={20} />,
-              label: 'GitHub',
-              value: 'hasbuen',
-              href: 'https://github.com/hasbuen',
-              color: 'slate',
-            },
-          ].map((c) => (
-            <a
-              key={c.label}
-              href={c.href}
-              target={c.href.startsWith('http') ? '_blank' : undefined}
-              rel={c.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-              className="card p-5 flex flex-col gap-3 hover:border-blue-500/30 transition-all group hover:-translate-y-1"
-            >
-              <div className="text-blue-400 group-hover:scale-110 transition-transform">
-                {c.icon}
+  const copyEmail = (e: React.MouseEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+    navigator.clipboard.writeText(email)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
+  }
+
+  return (
+    <section id="contato" className="border-t border-slate-800/60 relative overflow-hidden">
+      <div className="section-container">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.5 }}
+        >
+          <p className="text-blue-400 text-xs sm:text-sm font-bold uppercase tracking-widest mb-2 flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
+            Canais de Comunicação
+          </p>
+          <h2 className="section-title">Vamos Conversar?</h2>
+          <p className="section-subtitle max-w-lg">
+            Estou à disposição para contratações, novas oportunidades corporativas, desafios de suporte ou desenvolvimento.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4 max-w-4xl mb-14">
+          {/* E-mail Card */}
+          <motion.a
+            whileHover={{ y: -4, borderColor: 'rgba(59, 130, 246, 0.45)' }}
+            transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+            href={`mailto:${email}`}
+            className="card p-5 flex flex-col justify-between gap-4 group bg-slate-900/70 relative"
+          >
+            <div className="flex items-center justify-between">
+              <div className="p-2 bg-blue-600/15 text-blue-400 rounded-xl group-hover:scale-110 transition-transform">
+                <Mail size={20} />
               </div>
-              <div>
-                <div className="text-xs text-slate-500 mb-0.5">{c.label}</div>
-                <div className="text-xs font-medium text-slate-300 truncate">{c.value}</div>
+              <button
+                onClick={copyEmail}
+                className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white transition-colors"
+                title="Copiar e-mail"
+              >
+                {copied ? <Check size={14} className="text-emerald-400" /> : <Copy size={14} />}
+              </button>
+            </div>
+            <div>
+              <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1">E-mail</div>
+              <div className="text-xs font-semibold text-slate-200 break-all leading-snug">
+                {email}
               </div>
-            </a>
-          ))}
+              {copied && (
+                <div className="text-[10px] text-emerald-400 font-bold mt-1">Copiado para a área de transferência!</div>
+              )}
+            </div>
+          </motion.a>
+
+          {/* WhatsApp Card */}
+          <motion.a
+            whileHover={{ y: -4, borderColor: 'rgba(34, 197, 94, 0.45)' }}
+            transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+            href="https://wa.me/5545999823929"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="card p-5 flex flex-col justify-between gap-4 group bg-slate-900/70"
+          >
+            <div className="p-2 w-fit bg-emerald-600/15 text-emerald-400 rounded-xl group-hover:scale-110 transition-transform">
+              <Phone size={20} />
+            </div>
+            <div>
+              <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1">WhatsApp / Telefone</div>
+              <div className="text-xs sm:text-sm font-semibold text-slate-200">
+                (45) 9 9982-3929
+              </div>
+              <div className="text-[10px] text-slate-400 mt-0.5">Mensagem direta</div>
+            </div>
+          </motion.a>
+
+          {/* LinkedIn Card */}
+          <motion.a
+            whileHover={{ y: -4, borderColor: 'rgba(14, 165, 233, 0.45)' }}
+            transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+            href="https://www.linkedin.com/in/julio-cesar-ovidio-bueno/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="card p-5 flex flex-col justify-between gap-4 group bg-slate-900/70"
+          >
+            <div className="p-2 w-fit bg-sky-600/15 text-sky-400 rounded-xl group-hover:scale-110 transition-transform">
+              <LinkedinIcon size={20} />
+            </div>
+            <div>
+              <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1">LinkedIn</div>
+              <div className="text-xs sm:text-sm font-semibold text-slate-200 truncate">
+                in/julio-cesar-ovidio-bueno
+              </div>
+              <div className="text-[10px] text-slate-400 mt-0.5">Conexão profissional</div>
+            </div>
+          </motion.a>
+
+          {/* GitHub Card */}
+          <motion.a
+            whileHover={{ y: -4, borderColor: 'rgba(148, 163, 184, 0.45)' }}
+            transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+            href="https://github.com/hasbuen"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="card p-5 flex flex-col justify-between gap-4 group bg-slate-900/70"
+          >
+            <div className="p-2 w-fit bg-slate-700/30 text-slate-300 rounded-xl group-hover:scale-110 transition-transform">
+              <GithubIcon size={20} />
+            </div>
+            <div>
+              <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1">GitHub</div>
+              <div className="text-xs sm:text-sm font-semibold text-slate-200">
+                github.com/hasbuen
+              </div>
+              <div className="text-[10px] text-slate-400 mt-0.5">Repositórios e código</div>
+            </div>
+          </motion.a>
         </div>
 
-        {/* Footer */}
-        <div className="border-t border-slate-800/60 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-600">
-          <p>
-            Feito com <Heart size={11} className="inline text-red-500 fill-red-500" /> em Cascavel, PR.
+        {/* Rodapé Elegante */}
+        <div className="border-t border-slate-800/80 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+          <p className="flex items-center gap-1.5">
+            <span>Desenvolvido com carinho</span>
+            <Heart size={12} className="text-red-500 fill-red-500 inline" />
+            <span>em Cascavel, PR — Brasil.</span>
           </p>
-          <p>© 2024 · Julio Cesar Ovídio Bueno · Todos os direitos reservados.</p>
+          <p className="text-slate-400">
+            © {new Date().getFullYear()} · Julio Cesar Ovídio Bueno · Todos os direitos reservados.
+          </p>
         </div>
       </div>
     </section>

@@ -7,7 +7,7 @@
     --color-primary: #3b82f6;
     --color-primary-dark: #1d4ed8;
     --color-accent: #0ea5e9;
-    --color-bg: #0f172a;
+    --color-bg: #0a0f1e;
     --color-surface: #1e293b;
     --color-surface-2: #334155;
     --color-text: #f1f5f9;
@@ -17,9 +17,13 @@
 
   * {
     scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
   }
 
-  html {
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
     @apply bg-slate-950 text-slate-100;
   }
 
@@ -27,8 +31,9 @@
     @apply font-sans antialiased;
     background-color: #0a0f1e;
     background-image:
-      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(59, 130, 246, 0.08), transparent),
-      radial-gradient(ellipse 60% 40% at 90% 80%, rgba(14, 165, 233, 0.04), transparent);
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(59, 130, 246, 0.12), transparent),
+      radial-gradient(ellipse 60% 40% at 90% 80%, rgba(14, 165, 233, 0.06), transparent),
+      radial-gradient(ellipse 50% 50% at 10% 40%, rgba(99, 102, 241, 0.05), transparent);
     background-attachment: fixed;
   }
 
@@ -39,7 +44,7 @@
     @apply bg-slate-900;
   }
   ::-webkit-scrollbar-thumb {
-    @apply bg-blue-600 rounded-full;
+    @apply bg-blue-600/80 rounded-full;
   }
   ::-webkit-scrollbar-thumb:hover {
     @apply bg-blue-500;
@@ -52,35 +57,35 @@
 
 @layer components {
   .section-container {
-    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20;
+    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20;
   }
 
   .section-title {
-    @apply text-3xl sm:text-4xl font-bold text-white mb-3;
+    @apply text-2xl sm:text-3xl md:text-4xl font-extrabold text-white mb-3 tracking-tight;
   }
 
   .section-subtitle {
-    @apply text-slate-400 text-lg mb-12;
+    @apply text-slate-400 text-base sm:text-lg mb-8 sm:mb-12 leading-relaxed;
   }
 
   .card {
-    @apply bg-slate-800/50 border border-slate-700/50 rounded-2xl backdrop-blur-sm;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    @apply bg-slate-900/60 border border-slate-800/80 rounded-2xl backdrop-blur-md;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
   }
 
   .card:hover {
-    @apply border-blue-500/30;
-    box-shadow: 0 0 30px -10px rgba(59, 130, 246, 0.2);
+    @apply border-blue-500/40;
+    box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.15);
   }
 
   .btn-primary {
-    @apply inline-flex items-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl
-           transition-all duration-200 hover:shadow-lg hover:shadow-blue-500/25 hover:-translate-y-0.5 active:translate-y-0;
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl
+           transition-all duration-200 hover:shadow-lg hover:shadow-blue-500/25 active:scale-95 text-sm;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center gap-2 px-5 py-2.5 bg-slate-700/70 hover:bg-slate-600/70 text-slate-200 font-medium rounded-xl
-           border border-slate-600/50 hover:border-slate-500 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0;
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-slate-800/80 hover:bg-slate-700/80 text-slate-200 font-medium rounded-xl
+           border border-slate-700/60 hover:border-slate-500/80 transition-all duration-200 active:scale-95 text-sm;
   }
 
   .badge {
@@ -88,15 +93,15 @@
   }
 
   .tag {
-    @apply px-2.5 py-1 bg-slate-700/60 text-slate-300 rounded-lg text-xs font-medium border border-slate-600/40;
+    @apply px-2.5 py-1 bg-slate-800/80 text-slate-300 rounded-lg text-xs font-medium border border-slate-700/60;
   }
 
   .gradient-text {
-    @apply bg-gradient-to-r from-blue-400 to-sky-400 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-blue-400 via-sky-300 to-indigo-300 bg-clip-text text-transparent;
   }
 
   .nav-link {
-    @apply text-slate-400 hover:text-white font-medium transition-colors duration-200 relative;
+    @apply text-slate-400 hover:text-white font-medium transition-colors duration-200 relative py-1;
   }
 
   .nav-link.active {
@@ -105,7 +110,7 @@
 
   .nav-link::after {
     content: '';
-    @apply absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-500 transition-all duration-200 rounded-full;
+    @apply absolute -bottom-0.5 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-sky-400 transition-all duration-200 rounded-full;
   }
 
   .nav-link:hover::after,
